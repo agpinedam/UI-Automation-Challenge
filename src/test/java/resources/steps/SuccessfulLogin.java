@@ -13,7 +13,7 @@ import utils.Hooks;
 import java.io.IOException;
 import java.util.List;
 
-public class InvalidLoginSteps extends Hooks {
+public class SuccessfulLogin extends Hooks {
     /*
     @Given("the user wants to log in")
     public void theUserWantsToLogIn() throws IOException {

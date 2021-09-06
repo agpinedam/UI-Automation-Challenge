@@ -10,7 +10,7 @@ import utils.Hooks;
 
 import java.io.IOException;
 
-public class ValidLoginSteps extends Hooks {
+public class FailedLogin extends Hooks {
     //Test1
     @Given("the user wants to login")
     public void theUserWantsToLogin() throws IOException {

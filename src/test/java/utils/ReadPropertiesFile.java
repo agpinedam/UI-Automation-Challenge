@@ -12,7 +12,7 @@ public class ReadPropertiesFile {
     private String invalidPassword;
 
     private void readCredentials () throws IOException {
-        FileInputStream file = new FileInputStream(".\\src\\test\\java\\resources\\Configuration.properties");
+        FileInputStream file = new FileInputStream(".\\src\\test\\java\\resources\\Environment.properties");
         Properties properties = new Properties();
         properties.load(file);
         domain = properties.getProperty("domain");
