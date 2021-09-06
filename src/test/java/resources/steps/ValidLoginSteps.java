@@ -1,6 +1,4 @@
 package resources.steps;
-
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -12,7 +10,8 @@ import utils.Hooks;
 
 import java.io.IOException;
 
-public class Steps extends Hooks {
+public class ValidLoginSteps extends Hooks {
+    //Test1
     @Given("the user wants to login")
     public void theUserWantsToLogin() throws IOException {
         setup();

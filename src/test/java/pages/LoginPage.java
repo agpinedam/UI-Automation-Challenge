@@ -10,6 +10,7 @@ public class LoginPage {
     private ReadPropertiesFile readPropertiesFile;
     private By password =By.id("password");
     private By loginButton = By.id("login_button");
+    private By redMessage = By.className("background_color");
 
     public LoginPage(WebDriver driver, ReadPropertiesFile readPropertiesFile){
         this.driver=driver;
@@ -20,5 +21,13 @@ public class LoginPage {
         driver.findElement(username).sendKeys(readPropertiesFile.getUser());
         driver.findElement(password).sendKeys(readPropertiesFile.getValidPassword());
         driver.findElement(loginButton).click();
+    }
+    public void loginInvalidCredentials(){
+        driver.findElement(username).sendKeys(readPropertiesFile.getUser());
+        driver.findElement(password).sendKeys(readPropertiesFile.getInvalidPassword());
+        driver.findElement(loginButton).click();
+    }
+    public String redErrorMessage(){
+        return driver.findElement(redMessage).getText();
     }
 }
