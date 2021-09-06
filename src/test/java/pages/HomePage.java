@@ -11,7 +11,7 @@ public class HomePage {
         this.driver=driver;
     }
 
-    public void Login(){
+    public void clickLoginButton(){
         driver.findElement(login).click();
     }
 }

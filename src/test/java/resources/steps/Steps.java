@@ -3,35 +3,31 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import utils.ReadPropertiesFile;
+import org.testng.Assert;
+import pages.HomePage;
+import pages.LoginPage;
+import pages.UserPage;
+import utils.Hooks;
 
 import java.io.IOException;
 
-public class Steps {
+public class Steps extends Hooks {
     @Given("the user wants to login")
     public void theUserWantsToLogin() throws IOException {
-        ReadPropertiesFile readPropertiesFile =ReadPropertiesFile.getInstance();
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.navigate().to(readPropertiesFile.getDomain());
-        By login = By.linkText("Login");
-        driver.findElement(login).click();
-        //driver.quit();
-        By username = By.id("username");
-        driver.findElement(username).sendKeys(readPropertiesFile.getUser());
-        By password =By.id("password");
-        driver.findElement(password).sendKeys(readPropertiesFile.getValidPassword());
-        By loginButton = By.id("login_button");
-        driver.findElement(loginButton).click();
+        setup();
+        HomePage homePage = new HomePage(driver);
+        homePage.clickLoginButton();
     }
 
     @When("the user enters the credentials")
     public void theUserEntersTheCredentials() {
+        LoginPage loginPage = new LoginPage(driver,readPropertiesFile);
+        loginPage.loginValidCredentials();
     }
 
     @Then("the user should be able to login")
     public void theUserShouldBeAbleToLogin() {
+        UserPage userPage = new UserPage(driver,readPropertiesFile);
+        Assert.assertEquals(userPage.getUserName(),readPropertiesFile.getUser());
     }
 }
