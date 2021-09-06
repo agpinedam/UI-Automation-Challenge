@@ -1,8 +1,9 @@
 package resources.steps;
+
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import pages.HomePage;
 import pages.LoginPage;
@@ -29,5 +30,6 @@ public class Steps extends Hooks {
     public void theUserShouldBeAbleToLogin() {
         UserPage userPage = new UserPage(driver,readPropertiesFile);
         Assert.assertEquals(userPage.getUserName(),readPropertiesFile.getUser());
+        driver.quit();
     }
 }
