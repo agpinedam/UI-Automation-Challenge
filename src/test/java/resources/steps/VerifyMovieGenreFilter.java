@@ -16,12 +16,12 @@ public class VerifyMovieGenreFilter extends Hooks {
         homePage.movieOptions();
         homePage.topRated();
     }
-    @And("the user wants to filter for ‘action’ movies")
+    @And("the user wants to filter for action movies")
     public void theUserWantsToFilterForActionMovies() {
         topRatedPage.filterOptions();
     }
 
-    @When("the user applies the ‘action’ filter")
+    @When("the user applies the action filter")
     public void theUserAppliesTheActionFilter() {
         topRatedPage.actionFilter();
         topRatedPage.applyFilter();
@@ -29,7 +29,7 @@ public class VerifyMovieGenreFilter extends Hooks {
 
     @And("the user selects any movie")
     public void theUserSelectsAnyMovie() {
-        topRatedPage.selectMovie("My Hero Academia: Heroes Rising");
+        topRatedPage.selectMovie("The Dark Knight");
     }
 
     @Then("the user should see the genre of the movie includes action")

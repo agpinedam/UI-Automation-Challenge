@@ -19,7 +19,7 @@ public class SuccessfulSearch  extends Hooks {
     }
     @Then("the user should see the movie as the first result")
     public void theUserShouldSeeTheMovieAsTheFirstResult() {
-        Assert.assertEquals(movieResultsPage.firstResult(),"Fight Club");
+        Assert.assertEquals(movieResultsPage.firstNameResult(), "Fight Club");
         driver.close();
     }
 }

@@ -2,14 +2,11 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import utils.ReadPropertiesFile;
 
 public class UserPage {
-    private By userName;
-    private WebDriver driver;
-    private ReadPropertiesFile readPropertiesFile;
-
+    private final WebDriver driver;
+    private final ReadPropertiesFile readPropertiesFile;
 
     public UserPage(WebDriver driver, ReadPropertiesFile readPropertiesFile){
         this.driver=driver;
@@ -17,8 +14,7 @@ public class UserPage {
     }
 
     public String getUserName(){
-        userName= By.linkText(readPropertiesFile.getUser());
-        String user = driver.findElement(userName).getText();
-        return user;
+        By userName = By.linkText(readPropertiesFile.getUser());
+        return driver.findElement(userName).getText();
     }
 }

@@ -17,6 +17,8 @@ public class Hooks {
     protected LoginPage loginPage;
     protected UserPage userPage;
     protected MovieResultsPage movieResultsPage;
+    protected MoviePage moviePage;
+    protected ActorPage actorPage;
     @BeforeMethod
     public void setup() throws IOException {
         System.setProperty("webdriver.chrome.driver",".\\src\\test\\java\\resources\\drivers\\chromedriver.exe");
@@ -29,5 +31,7 @@ public class Hooks {
         userPage = new UserPage(driver,readPropertiesFile);
         movieResultsPage= new MovieResultsPage(driver);
         topRatedPage = new TopRatedPage(driver);
+        moviePage = new MoviePage(driver);
+        actorPage = new ActorPage(driver);
     }
 }
