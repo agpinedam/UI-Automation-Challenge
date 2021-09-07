@@ -4,14 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.ReadPropertiesFile;
 
-public class MovieResults {
-    private By name =By.tagName("h2");
+public class MovieResultsPage {
+    private By name =By.linkText("Fight Club");
     private WebDriver driver;
-    private ReadPropertiesFile readPropertiesFile;
 
-    public MovieResults(WebDriver driver,ReadPropertiesFile readPropertiesFile){
+    public MovieResultsPage(WebDriver driver){
         this.driver = driver;
-        this.readPropertiesFile = readPropertiesFile;
     }
 
     public String firstResult(){

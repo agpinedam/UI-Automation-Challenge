@@ -1,14 +1,11 @@
 package resources.steps;
 
-import io.cucumber.java.bs.A;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 import pages.HomePage;
-import pages.MovieResults;
+import pages.MovieResultsPage;
 import utils.Hooks;
 import java.io.IOException;
 
@@ -25,8 +22,8 @@ public class SuccessfulSearch  extends Hooks {
     }
     @Then("the user should see the movie as the first result")
     public void theUserShouldSeeTheMovieAsTheFirstResult() {
-        MovieResults movieResults = new MovieResults(driver,readPropertiesFile);
-        Assert.assertEquals(movieResults.firstResult(),"Fight Club");
+        MovieResultsPage movieResultsPage = new MovieResultsPage(driver);
+        Assert.assertEquals(movieResultsPage.firstResult(),"Fight Club");
         driver.close();
     }
 }

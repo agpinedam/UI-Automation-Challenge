@@ -1,34 +1,46 @@
 package resources.steps;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pages.HomePage;
 import pages.LoginPage;
-import pages.UserPage;
 import utils.Hooks;
 
 import java.io.IOException;
+import java.util.List;
 
 public class FailedLogin extends Hooks {
-    //Test1
-    @Given("the user wants to login")
-    public void theUserWantsToLogin() throws IOException {
+    /*
+    @Given("the user wants to log in")
+    public void theUserWantsToLogIn() throws IOException {
         setup();
         HomePage homePage = new HomePage(driver);
         homePage.clickLoginButton();
     }
 
-    @When("the user enters the credentials")
-    public void theUserEntersTheCredentials() {
+    @When("the user submits invalid credentials")
+    public void theUserSubmitsInvalidCredentials() {
         LoginPage loginPage = new LoginPage(driver,readPropertiesFile);
-        loginPage.loginValidCredentials();
+        loginPage.loginInvalidCredentials();
     }
 
-    @Then("the user should be able to login")
-    public void theUserShouldBeAbleToLogin() {
-        UserPage userPage = new UserPage(driver,readPropertiesFile);
-        Assert.assertEquals(userPage.getUserName(),readPropertiesFile.getUser());
-        driver.quit();
+    @Then("the user should see a red error message")
+    public void theUserShouldSeeARedErrorMessage() {
+        LoginPage loginPage = new LoginPage(driver,readPropertiesFile);
+        String redErrorMessage = loginPage.redErrorMessage();
+        Assert.assertEquals(redErrorMessage," There was a problem");
     }
+
+    @And("the user should see two more error messages")
+    public void theUserShouldSeeTwoMoreErrorMessages() {
+        By errorMessages = By.cssSelector(".carton.content");
+        List<WebElement> messages= driver.findElements(errorMessages);
+        String message1 = messages.get(0).getText();
+        System.out.println(message1);
+    }
+     */
 }
