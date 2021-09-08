@@ -13,34 +13,32 @@ import utils.Hooks;
 import java.io.IOException;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
 public class FailedLogin extends Hooks {
-    /*
     @Given("the user wants to log in")
     public void theUserWantsToLogIn() throws IOException {
         setup();
-        HomePage homePage = new HomePage(driver);
         homePage.clickLoginButton();
     }
 
     @When("the user submits invalid credentials")
     public void theUserSubmitsInvalidCredentials() {
-        LoginPage loginPage = new LoginPage(driver,readPropertiesFile);
         loginPage.loginInvalidCredentials();
     }
 
     @Then("the user should see a red error message")
     public void theUserShouldSeeARedErrorMessage() {
-        LoginPage loginPage = new LoginPage(driver,readPropertiesFile);
         String redErrorMessage = loginPage.redErrorMessage();
         Assert.assertEquals(redErrorMessage," There was a problem");
     }
 
     @And("the user should see two more error messages")
     public void theUserShouldSeeTwoMoreErrorMessages() {
-        By errorMessages = By.cssSelector(".carton.content");
-        List<WebElement> messages= driver.findElements(errorMessages);
-        String message1 = messages.get(0).getText();
-        System.out.println(message1);
+        String [] splitMessages = loginPage.getMessages();
+        Assert.assertEquals(splitMessages[1],"We couldn't validate your information. Want to try again?");
+        assertThat(splitMessages[2],containsString("You have"));
+        driver.close();
     }
-     */
 }

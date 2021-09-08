@@ -10,8 +10,7 @@ import java.util.List;
 public class ActorPage extends Hooks {
 
     private WebDriver driver;
-    private By timeline = By.cssSelector("#media_v4 > div > div > div:nth-child(2) " +
-            "> div > section.full_wrapper.credits > div.credits_list > table:nth-child(2) > tbody");
+    private By timeline = By.cssSelector(".credits_list > table:nth-child(2) > tbody");
 
     public ActorPage(WebDriver driver){
         this.driver = driver;

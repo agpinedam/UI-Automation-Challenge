@@ -11,6 +11,7 @@ public class LoginPage {
     private By password =By.id("password");
     private By loginButton = By.id("login_button");
     private By redMessage = By.className("background_color");
+    private By errorMessages = By.className("carton");
 
     public LoginPage(WebDriver driver, ReadPropertiesFile readPropertiesFile){
         this.driver=driver;
@@ -29,5 +30,9 @@ public class LoginPage {
     }
     public String redErrorMessage(){
         return driver.findElement(redMessage).getText();
+    }
+    public String[] getMessages(){
+        String messages= driver.findElement(errorMessages).getText();
+        return messages.split("\n");
     }
 }

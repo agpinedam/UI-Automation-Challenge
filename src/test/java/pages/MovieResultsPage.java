@@ -5,8 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 
 public class MovieResultsPage {
-    private By name =By.cssSelector("#main > section > div > div > div.white_column > section > " +
-            "div.search_results.movie > div > div > div > div.details > div.wrapper > div > div > a > h2");
+    private By name =By.cssSelector(".wrapper > div > div > a > h2");
     private By firstMovie;
     private WebDriver driver;
 

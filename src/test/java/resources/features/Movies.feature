@@ -11,3 +11,8 @@ Feature: Movies
     And the user selects any movie
     Then the user should see the genre of the movie includes action
 
+  Scenario: Sort by Dates on Ascending Order
+    Given the user wants to sort top-rated movies by their date
+    When the user sorts by date on ascending order
+    Then the user should see the dates of the first 4 movies in ascending order
+

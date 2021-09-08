@@ -4,14 +4,11 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import utils.Hooks;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
+
 
 public class ValidateActingTimeline extends Hooks {
     @Given("the user selects a movie with actors")
@@ -34,5 +31,6 @@ public class ValidateActingTimeline extends Hooks {
     @Then("the title of the movie should be in the timeline")
     public void theTitleOfTheMovieShouldBeInTheTimeline() {
         Assert.assertTrue(actorPage.isMovieName("Black Widow"));
+        driver.close();
     }
 }
