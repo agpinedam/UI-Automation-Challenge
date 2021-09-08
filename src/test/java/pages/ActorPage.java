@@ -3,30 +3,31 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import utils.Hooks;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 import java.util.List;
 
-public class ActorPage extends Hooks {
+public class ActorPage {
 
-    private WebDriver driver;
-    private By timeline = By.cssSelector(".credits_list > table:nth-child(2) > tbody");
+    private final WebDriver driver;
+    private final By timeline = By.cssSelector(".credits_list > table:nth-child(2) > tbody");
+    private final Logger log = LoggerFactory.getLogger(ActorPage.class);
 
     public ActorPage(WebDriver driver){
         this.driver = driver;
     }
 
     public List<WebElement> getTimeline(){
+        log.debug("Get Acting Timeline");
         return driver.findElements(timeline);
     }
 
-    public Boolean isMovieName(String movieName){
+    public Boolean isMovieName(String movieName) {
         By movie = By.linkText(movieName);
         String nameMovie = driver.findElement(movie).getText();
-        if(nameMovie.equals(movieName)){
-            return true;
-        }else {return false;}
+        log.info("The movie is in the Timeline");
+        return nameMovie.equals(movieName);
     }
-
-
 }

@@ -1,15 +1,15 @@
-package resources.steps;
+package resources.stepDefinition;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
-import utils.Hooks;
+import resources.hooks.InitialHook;
 
 import java.io.IOException;
 
-public class VerifyMovieGenreFilter extends Hooks {
+public class VerifyMovieGenreFilter extends InitialHook {
     @Given("the user wants to see the top-rated movies")
     public void theUserWantsToSeeTheTopRatedMovies() throws IOException {
         setup();
@@ -35,6 +35,6 @@ public class VerifyMovieGenreFilter extends Hooks {
     @Then("the user should see the genre of the movie includes action")
     public void theUserShouldSeeTheGenreOfTheMovieIncludesAction() {
         Assert.assertEquals(topRatedPage.verifyGenre(),"Action");
-        driver.close();
+        driver.quit();
     }
 }

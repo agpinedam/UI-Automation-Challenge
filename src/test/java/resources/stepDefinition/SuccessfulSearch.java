@@ -1,13 +1,13 @@
-package resources.steps;
+package resources.stepDefinition;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
-import utils.Hooks;
+import resources.hooks.InitialHook;
 import java.io.IOException;
 
-public class SuccessfulSearch  extends Hooks {
+public class SuccessfulSearch  extends InitialHook {
 
     @Given("the user wants to search for a movie")
     public void theUserWantsToSearchForAMovie() throws IOException {
@@ -15,11 +15,12 @@ public class SuccessfulSearch  extends Hooks {
     }
     @When("the user enters the title Fight Club")
     public void theUserEntersTheTitleFightClub() {
+
         homePage.search("Fight Club");
     }
     @Then("the user should see the movie as the first result")
     public void theUserShouldSeeTheMovieAsTheFirstResult() {
         Assert.assertEquals(movieResultsPage.firstNameResult(), "Fight Club");
-        driver.close();
+        driver.quit();
     }
 }

@@ -1,16 +1,17 @@
-package resources.steps;
+package resources.stepDefinition;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.eo.Se;
 import org.testng.Assert;
-import utils.Hooks;
+import resources.hooks.InitialHook;
 
 import java.io.IOException;
 
 
-public class ValidateActingTimeline extends Hooks {
+public class ValidateActingTimeline extends InitialHook {
     @Given("the user selects a movie with actors")
     public void theUserSelectsAMovieWithActors() throws IOException {
         setup();
@@ -31,6 +32,6 @@ public class ValidateActingTimeline extends Hooks {
     @Then("the title of the movie should be in the timeline")
     public void theTitleOfTheMovieShouldBeInTheTimeline() {
         Assert.assertTrue(actorPage.isMovieName("Black Widow"));
-        driver.close();
+        driver.quit();
     }
 }

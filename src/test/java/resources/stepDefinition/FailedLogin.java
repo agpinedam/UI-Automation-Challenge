@@ -1,22 +1,17 @@
-package resources.steps;
+package resources.stepDefinition;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import pages.HomePage;
-import pages.LoginPage;
-import utils.Hooks;
+import resources.hooks.InitialHook;
 
 import java.io.IOException;
-import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-public class FailedLogin extends Hooks {
+public class FailedLogin extends InitialHook {
     @Given("the user wants to log in")
     public void theUserWantsToLogIn() throws IOException {
         setup();
@@ -25,7 +20,8 @@ public class FailedLogin extends Hooks {
 
     @When("the user submits invalid credentials")
     public void theUserSubmitsInvalidCredentials() {
-        loginPage.loginInvalidCredentials();
+        loginPage.typingInvalidCredentials();
+        loginPage.clickSearchButton();
     }
 
     @Then("the user should see a red error message")
@@ -39,6 +35,6 @@ public class FailedLogin extends Hooks {
         String [] splitMessages = loginPage.getMessages();
         Assert.assertEquals(splitMessages[1],"We couldn't validate your information. Want to try again?");
         assertThat(splitMessages[2],containsString("You have"));
-        driver.close();
+        driver.quit();
     }
 }

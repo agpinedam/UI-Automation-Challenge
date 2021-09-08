@@ -1,9 +1,9 @@
-package resources.steps;
+package resources.stepDefinition;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import utils.Hooks;
+import resources.hooks.InitialHook;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -13,7 +13,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.lessThan;
 
 
-public class SortDatesAscendingOrder extends Hooks {
+public class SortDatesAscendingOrder extends InitialHook {
     @Given("the user wants to sort top-rated movies by their date")
     public void theUserWantsToSortTopRatedMoviesByTheirDate() throws IOException {
         setup();
@@ -35,6 +35,6 @@ public class SortDatesAscendingOrder extends Hooks {
         assertThat(dates[0],lessThan(dates[1]));
         assertThat(dates[1],lessThan(dates[2]));
         assertThat(dates[2],lessThan(dates[3]));
-        driver.close();
+        driver.quit();
     }
 }
