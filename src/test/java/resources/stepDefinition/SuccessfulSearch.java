@@ -13,14 +13,13 @@ public class SuccessfulSearch  extends InitialHook {
     public void theUserWantsToSearchForAMovie() throws IOException {
         setup();
     }
-    @When("the user enters the title Fight Club")
-    public void theUserEntersTheTitleFightClub() {
-
-        homePage.search("Fight Club");
+    @When("the user enters the title {string}")
+    public void theUserEntersTheTitle(String movieName) {
+        homePage.search(movieName);
     }
-    @Then("the user should see the movie as the first result")
-    public void theUserShouldSeeTheMovieAsTheFirstResult() {
-        Assert.assertEquals(movieResultsPage.firstNameResult(), "Fight Club");
+    @Then("the user should see the movie {string} as the first result")
+    public void theUserShouldSeeTheMovieAsTheFirstResult(String movieName) {
+        Assert.assertEquals(movieResultsPage.firstNameResult(), movieName);
         driver.quit();
     }
 }

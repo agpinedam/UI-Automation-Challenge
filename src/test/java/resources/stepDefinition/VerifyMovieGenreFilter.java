@@ -16,25 +16,23 @@ public class VerifyMovieGenreFilter extends InitialHook {
         homePage.menuComponent.movieOptions();
         homePage.menuComponent.topRated();
     }
-    @And("the user wants to filter for action movies")
-    public void theUserWantsToFilterForActionMovies() {
+    @And("the user wants to filter for {string} movies")
+    public void theUserWantsToFilterForMovies(String genre) {
         topRatedPage.filterOptions();
     }
-
-    @When("the user applies the action filter")
-    public void theUserAppliesTheActionFilter() {
-        topRatedPage.genreFilter("Action");
+    @When("the user applies the {string} filter")
+    public void theUserAppliesTheFilter(String genre) {
+        topRatedPage.genreFilter(genre);
         topRatedPage.clickOnSearch();
     }
-
-    @And("the user selects any movie")
-    public void theUserSelectsAnyMovie() {
-        topRatedPage.selectMovie("The Dark Knight");
+    @And("the user selects {string} movie")
+    public void theUserSelectsMovie(String movieName) {
+        topRatedPage.selectMovie(movieName);
     }
-
-    @Then("the user should see the genre of the movie includes action")
-    public void theUserShouldSeeTheGenreOfTheMovieIncludesAction() {
-        Assert.assertEquals(topRatedPage.verifyGenre("Action"),"Action");
+    @Then("the user should see the genre of the movie includes {string}")
+    public void theUserShouldSeeTheGenreOfTheMovieIncludes(String genre) {
+        Assert.assertEquals(topRatedPage.verifyGenre(genre),genre);
         driver.quit();
     }
+
 }

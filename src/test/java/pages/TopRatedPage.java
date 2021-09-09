@@ -33,7 +33,7 @@ public class TopRatedPage extends BasePage {
         log.debug("Deploy filter options");
     }
     public void genreFilter(String filter){
-        genreFilter = By.linkText("Action");
+        genreFilter = By.linkText(filter);
         driver.findElement(genreFilter).click();
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,1600)", "");
@@ -57,7 +57,7 @@ public class TopRatedPage extends BasePage {
     }
 
     public String verifyGenre(String filter){
-        genreFilter = By.linkText("Action");
+        genreFilter = By.linkText(filter);
         log.info("Verify the movie genre");
         return driver.findElement(genreFilter).getText();
     }
@@ -71,18 +71,18 @@ public class TopRatedPage extends BasePage {
         driver.findElement(ascendingOrder).click();
         log.debug("Sort by ascending order");
     }
-    public Date[] getMovieDates(int arg) {
+    public Date[] getMovieDates(int moviesQuantity) {
         wait(firstMovie);
         String[] response = driver.findElements(page).get(0).getText().split("\n");
         log.info("Get movie dates");
-        return changeDateFormat(arg,response);
+        return changeDateFormat(moviesQuantity,response);
     }
 
-    private Date[] changeDateFormat(int arg, String[] response) {
+    private Date[] changeDateFormat(int moviesQuantity, String[] response) {
         ChangeDateFormat changeFormat = new ChangeDateFormat();
-        Date[] dates= new Date[arg];
+        Date[] dates= new Date[moviesQuantity];
         try {
-            for (int i = 1; i < arg * 2; i += 2) {
+            for (int i = 1; i < moviesQuantity * 2; i += 2) {
                 String date = response[i];
                 Date date1 = changeFormat.date(date);
                 dates[i / 2] = date1;
