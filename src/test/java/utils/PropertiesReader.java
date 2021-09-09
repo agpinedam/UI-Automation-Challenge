@@ -16,8 +16,8 @@ public class PropertiesReader {
         Properties properties = new Properties();
         properties.load(file);
         domain = properties.getProperty("domain");
-        user = properties.getProperty("user");
-        validPassword = properties.getProperty("validPassword");
+        user = System.getenv("userMovieDB");
+        validPassword = System.getenv("passwordMovieDB");
         invalidPassword = properties.getProperty("invalidPassword");
     }
     public static PropertiesReader getInstance() throws IOException{
