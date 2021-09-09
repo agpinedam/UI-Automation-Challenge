@@ -15,7 +15,7 @@ public class FailedLogin extends InitialHook {
     @Given("the user wants to log in")
     public void theUserWantsToLogIn() throws IOException {
         setup();
-        homePage.clickLoginButton();
+        homePage.menuComponent.clickLoginButton();
     }
 
     @When("the user submits invalid credentials")

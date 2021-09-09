@@ -15,12 +15,3 @@ Feature: Movies
     Given the user wants to sort top-rated movies by their date
     When the user sorts by date on ascending order
     Then the user should see the dates of the first 4 movies in ascending order
-
-  Scenario: Add Movie in a List
-    Given : I have created a list before
-    And : have the corresponding list id
-    And : I have a valid api key
-    And : I have a valid session ID
-    When : I send the query and the request
-    Then : I get a confirmation
-    And : I get a message

@@ -13,7 +13,7 @@ public class SuccessfulLogin extends InitialHook {
     @Given("the user wants to login")
     public void theUserWantsToLogin() throws IOException {
         setup();
-        homePage.clickLoginButton();
+        homePage.menuComponent.clickLoginButton();
     }
 
     @When("the user enters the credentials")
@@ -24,7 +24,7 @@ public class SuccessfulLogin extends InitialHook {
 
     @Then("the user should be able to login")
     public void theUserShouldBeAbleToLogin() {
-        Assert.assertEquals(userPage.getUserName(), getData.getUser());
+        Assert.assertEquals(userPage.getUserName(), propertiesReader.getUser());
         driver.quit();
     }
 }

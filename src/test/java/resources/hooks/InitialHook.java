@@ -2,16 +2,14 @@ package resources.hooks;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import pages.*;
-import utils.GetData;
+import utils.PropertiesReader;
 
 import java.io.IOException;
 
 public class InitialHook {
     protected    WebDriver driver;
-    protected GetData getData;
+    protected PropertiesReader propertiesReader;
     protected HomePage homePage;
     protected TopRatedPage topRatedPage;
     protected LoginPage loginPage;
@@ -22,13 +20,13 @@ public class InitialHook {
 
     public void setup() throws IOException {
         System.setProperty("webdriver.chrome.driver",".\\src\\test\\java\\resources\\drivers\\chromedriver.exe");
-        getData = GetData.getInstance();
+        propertiesReader = PropertiesReader.getInstance();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.navigate().to(getData.getDomain());
+        driver.navigate().to(propertiesReader.getDomain());
         homePage = new HomePage(driver);
-        loginPage = new LoginPage(driver, getData);
-        userPage = new UserPage(driver, getData);
+        loginPage = new LoginPage(driver, propertiesReader);
+        userPage = new UserPage(driver, propertiesReader);
         movieResultsPage= new MovieResultsPage(driver);
         topRatedPage = new TopRatedPage(driver);
         moviePage = new MoviePage(driver);

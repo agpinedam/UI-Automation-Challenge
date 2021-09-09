@@ -7,14 +7,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.List;
 
-public class ActorPage {
+public class ActorPage extends BasePage{
 
-    private final WebDriver driver;
     private final By timeline = By.className("credits_list");
     private final Logger log = LoggerFactory.getLogger(ActorPage.class);
 
     public ActorPage(WebDriver driver){
-        this.driver = driver;
+        super(driver);
     }
 
     public List<WebElement> getTimeline(){

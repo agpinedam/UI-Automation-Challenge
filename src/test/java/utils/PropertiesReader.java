@@ -4,8 +4,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class GetData {
-    private static GetData getData;
+public class PropertiesReader {
+    private static PropertiesReader propertiesReader;
     private String domain;
     private String user;
     private String validPassword;
@@ -20,12 +20,12 @@ public class GetData {
         validPassword = properties.getProperty("validPassword");
         invalidPassword = properties.getProperty("invalidPassword");
     }
-    public static GetData getInstance() throws IOException{
-        if(getData ==null){
-            getData = new GetData();
-            getData.readCredentials();
+    public static PropertiesReader getInstance() throws IOException{
+        if(propertiesReader ==null){
+            propertiesReader = new PropertiesReader();
+            propertiesReader.readCredentials();
         }
-        return getData;
+        return propertiesReader;
     }
     public String getDomain(){return domain;}
     public String getUser(){return user;}

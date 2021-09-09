@@ -13,8 +13,8 @@ public class VerifyMovieGenreFilter extends InitialHook {
     @Given("the user wants to see the top-rated movies")
     public void theUserWantsToSeeTheTopRatedMovies() throws IOException {
         setup();
-        homePage.movieOptions();
-        homePage.topRated();
+        homePage.menuComponent.movieOptions();
+        homePage.menuComponent.topRated();
     }
     @And("the user wants to filter for action movies")
     public void theUserWantsToFilterForActionMovies() {
