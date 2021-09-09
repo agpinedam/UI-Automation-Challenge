@@ -14,16 +14,15 @@ import java.text.ParseException;
 
 
 public class TopRatedPage {
-    private WebDriver driver;
-    private By filter = By.className("closed");
-    private By action = By.linkText("Action");
-    private By searchButton = By.linkText("Search");
-    private By actionMovie;
-    private By sortOptions = By.cssSelector(".filter > span > span > span.k-select");
-    private By ascendingOrder = By.cssSelector("#sort_by_listbox > li:nth-child(6)");
-    private By page = By.cssSelector("#page_1");
-    private By firstMovie = By.linkText("The Arrival of a Train at La Ciotat");
+    private final WebDriver driver;
+    private final By filter = By.className("closed");
+    private final By searchButton = By.linkText("Search");
+    private final By sortOptions = By.cssSelector(".filter > span > span > span.k-select");
+    private final By ascendingOrder = By.cssSelector("#sort_by_listbox > li:nth-child(6)");
+    private final By page = By.cssSelector("#page_1");
+    private final By firstMovie = By.linkText("The Arrival of a Train at La Ciotat");
     private final Logger log = LoggerFactory.getLogger(TopRatedPage.class);
+    private  By genreFilter;
 
     public TopRatedPage(WebDriver driver){
         this.driver = driver;
@@ -33,14 +32,15 @@ public class TopRatedPage {
         driver.findElement(filter).click();
         log.debug("Deploy filter options");
     }
-    public void actionFilter(){
-        driver.findElement(action).click();
+    public void genreFilter(String filter){
+        genreFilter = By.linkText("Action");
+        driver.findElement(genreFilter).click();
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,1600)", "");
         log.debug("Select action filter");
     }
 
-    public void applyFilter(){
+    public void clickOnSearch(){
         wait(searchButton);
         driver.findElement(searchButton).click();
         log.debug("Click on Search Button");
@@ -51,15 +51,16 @@ public class TopRatedPage {
         log.debug("Wait for elements");
     }
     public void selectMovie(String name){
-        actionMovie = By.linkText(name);
+        By actionMovie = By.linkText(name);
         wait(actionMovie);
         driver.findElement(actionMovie).click();
         log.debug("Select a movie");
     }
 
-    public String verifyGenre(){
+    public String verifyGenre(String filter){
+        genreFilter = By.linkText("Action");
         log.info("Verify the movie genre");
-        return driver.findElement(action).getText();
+        return driver.findElement(genreFilter).getText();
     }
 
     public void sortOptions(){

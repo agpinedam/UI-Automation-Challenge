@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 
 public class MoviePage {
-    private By name;
+    private By name = By.cssSelector("#cast_scroller > ol > li:nth-child(1) > p:nth-child(2) > a");;
     private WebDriver driver;
     private final Logger log = LoggerFactory.getLogger(MoviePage.class);
 
@@ -15,7 +15,6 @@ public class MoviePage {
         this.driver = driver;
     }
     public void searchFirstActor(){
-        name = By.cssSelector("#cast_scroller > ol > li:nth-child(1) > p:nth-child(2) > a");
         driver.findElement(name).click();
         log.debug("Select the first actor from the top billed cast");
     }

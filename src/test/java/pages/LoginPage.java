@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory;
 import utils.GetData;
 
 public class LoginPage {
-    private By username = By.id("username");
     private WebDriver driver;
     private GetData getData;
+    private By username = By.id("username");
     private By password =By.id("password");
     private By loginButton = By.id("login_button");
     private By redMessage = By.className("background_color");

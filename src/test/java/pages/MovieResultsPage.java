@@ -7,9 +7,8 @@ import org.slf4j.LoggerFactory;
 
 
 public class MovieResultsPage {
-    private By name =By.cssSelector(".wrapper > div > div > a > h2");
-    private By firstMovie;
-    private WebDriver driver;
+    private final By name =By.cssSelector(".wrapper > div > div > a > h2");
+    private final WebDriver driver;
     private final Logger log = LoggerFactory.getLogger(MovieResultsPage.class);
 
     public MovieResultsPage(WebDriver driver){
@@ -17,7 +16,7 @@ public class MovieResultsPage {
     }
 
     public String firstNameResult(){
-        log.info("Get the movie name of the first result");
+        log.info("Get the name of the first movie result");
         return driver.findElement(name).getText();
     }
 

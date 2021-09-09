@@ -4,11 +4,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.eo.Se;
 import org.testng.Assert;
 import resources.hooks.InitialHook;
 
 import java.io.IOException;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 
 public class ValidateActingTimeline extends InitialHook {
@@ -31,7 +33,8 @@ public class ValidateActingTimeline extends InitialHook {
 
     @Then("the title of the movie should be in the timeline")
     public void theTitleOfTheMovieShouldBeInTheTimeline() {
-        Assert.assertTrue(actorPage.isMovieName("Black Widow"));
+        String productions = actorPage.getProductionsList();
+        assertThat(productions,containsString("Black Widow"));
         driver.quit();
     }
 }

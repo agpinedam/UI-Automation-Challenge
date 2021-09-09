@@ -23,8 +23,8 @@ public class VerifyMovieGenreFilter extends InitialHook {
 
     @When("the user applies the action filter")
     public void theUserAppliesTheActionFilter() {
-        topRatedPage.actionFilter();
-        topRatedPage.applyFilter();
+        topRatedPage.genreFilter("Action");
+        topRatedPage.clickOnSearch();
     }
 
     @And("the user selects any movie")
@@ -34,7 +34,7 @@ public class VerifyMovieGenreFilter extends InitialHook {
 
     @Then("the user should see the genre of the movie includes action")
     public void theUserShouldSeeTheGenreOfTheMovieIncludesAction() {
-        Assert.assertEquals(topRatedPage.verifyGenre(),"Action");
+        Assert.assertEquals(topRatedPage.verifyGenre("Action"),"Action");
         driver.quit();
     }
 }

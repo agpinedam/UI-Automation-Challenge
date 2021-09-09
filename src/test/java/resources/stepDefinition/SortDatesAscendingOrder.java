@@ -25,12 +25,11 @@ public class SortDatesAscendingOrder extends InitialHook {
     public void theUserSortsByDateOnAscendingOrder() {
         topRatedPage.sortOptions();
         topRatedPage.sortByAscendingOrder();
-        topRatedPage.applyFilter();
+        topRatedPage.clickOnSearch();
     }
 
     @Then("the user should see the dates of the first {int} movies in ascending order")
     public void theUserShouldSeeTheDatesOfTheFirstMoviesInAscendingOrder(int arg0) throws ParseException {
-        topRatedPage.getMovieDates(arg0);
         Date[] dates= topRatedPage.getMovieDates(arg0);
         assertThat(dates[0],lessThan(dates[1]));
         assertThat(dates[1],lessThan(dates[2]));
